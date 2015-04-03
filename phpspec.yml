@@ -1,0 +1,4 @@
+suites:
+    deform:
+        namespace: DeForm\Laravel
+        psr4_prefix: DeForm\Laravel

@@ -1,0 +1,26 @@
+{
+    "name": "desmart/deform-laravel",
+    "description": "Laravel bindings for DeForm",
+    "require": {
+        "desmart/deform": "dev-master",
+        "illuminate/support": "~5.0",
+        "illuminate/http": "~5.0",
+        "illuminate/contracts": "~5.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Radoslaw Mejer",
+            "email": "radmen@desmart.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DeForm\\Laravel\\": "src"
+        }
+    }
+}
