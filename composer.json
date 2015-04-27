@@ -5,7 +5,8 @@
         "desmart/deform": "dev-master",
         "illuminate/support": "~5.0",
         "illuminate/http": "~5.0",
-        "illuminate/contracts": "~5.0"
+        "illuminate/contracts": "~5.0",
+        "illuminate/validation": "~5.0"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.1",
