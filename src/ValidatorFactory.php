@@ -1,8 +1,8 @@
 <?php namespace DeForm\Laravel;
 
-use Illuminate\Validation\Factory;
 use DeForm\Laravel\Adapter\ValidatorAdapter;
 use DeForm\Validation\ValidatorFactoryInterface;
+use Illuminate\Validation\Factory as ValidationFactory;
 
 class ValidatorFactory implements ValidatorFactoryInterface
 {
@@ -12,7 +12,7 @@ class ValidatorFactory implements ValidatorFactoryInterface
      */
     protected $factory;
 
-    public function __construct(Factory $factory)
+    public function __construct(ValidationFactory $factory)
     {
         $this->factory = $factory;
     }

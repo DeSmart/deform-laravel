@@ -4,13 +4,13 @@ namespace spec\DeForm\Laravel;
 
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
-use Illuminate\Validation\Factory;
 use Illuminate\Validation\Validator;
+use Illuminate\Validation\Factory as ValidationFactory;
 
 class ValidatorFactorySpec extends ObjectBehavior
 {
 
-    function let(Factory $factory)
+    function let(ValidationFactory $factory)
     {
         $this->beConstructedWith($factory);
     }
@@ -21,7 +21,7 @@ class ValidatorFactorySpec extends ObjectBehavior
         $this->shouldImplement('DeForm\Validation\ValidatorFactoryInterface');
     }
 
-    function it_creates_validator(Factory $factory, Validator $validator)
+    function it_creates_validator(ValidationFactory $factory, Validator $validator)
     {
         $rules = [
             'foo' => 'required',
