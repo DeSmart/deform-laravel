@@ -1,9 +1,9 @@
 <?php namespace DeForm\Laravel;
 
 use DeForm\ValidationHelper;
-use DeForm\Parser\HtmlParser;
 use DeForm\Factory\FormFactory;
 use DeForm\Factory\ElementFactory;
+use DeForm\Factory\HtmlParserFactory;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -12,16 +12,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function register()
     {
-        $this->app->singleton('deform', function ($app) {
+        $this->app->bind('deform', function ($app) {
             return new Factory($app['view'], $app['deform.form_factory']);
         });
 
         $this->app->bind('deform.form_factory', function ($app) {
             return new FormFactory(
-                $app['request'],
+                new Adapter\RequestAdapter($app['request']),
                 $app['deform.validator'],
                 $app['deform.element_factory'],
-                $app['deform.parser']
+                $app['deform.parser_factory']
             );
         });
 
@@ -32,11 +32,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         $this->app->bind('deform.element_factory', function ($app) {
-            return new ElementFactory($app['request']);
+            return new ElementFactory(
+                new Adapter\RequestAdapter($app['request'])
+            );
         });
 
-        $this->app->bind('deform.parser', function () {
-            return new HtmlParser;
+        $this->app->bind('deform.parser_factory', function () {
+            return new HtmlParserFactory;
         });
     }
 

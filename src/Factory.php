@@ -6,8 +6,14 @@ use Illuminate\Contracts\View\Factory as ViewFactory;
 class Factory
 {
 
+    /**
+     * @var \Illuminate\Contracts\View\Factory
+     */
     protected $viewFactory;
 
+    /**
+     * @var \DeForm\Factory\FormFactory
+     */
     protected $formFactory;
 
     public function __construct(ViewFactory $viewFactory, FormFactory $formFactory)
