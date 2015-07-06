@@ -22,7 +22,7 @@ class ValidatorAdapter implements ValidatorInterface
 
     public function getMessages()
     {
-        return $this->validator->messages()
-            ->all();
+        return $this->validator->getMessageBag()
+            ->toArray();
     }
 }

@@ -29,9 +29,9 @@ class ValidatorAdapterSpec extends ObjectBehavior
 
         $validator->setData($data)->shouldBeCalled();
         $validator->passes()->willReturn(true);
-        $validator->messages()->willReturn($bag);
+        $validator->getMessageBag()->willReturn($bag);
 
-        $bag->all()->willReturn([]);
+        $bag->toArray()->willReturn([]);
 
         $this->validate($data)->shouldReturn(true);
         $this->getMessages()->shouldReturn([]);
@@ -41,10 +41,12 @@ class ValidatorAdapterSpec extends ObjectBehavior
     {
         $validator->setData($data = [])->shouldBeCalled();
         $validator->passes()->willReturn(false);
-        $validator->messages()->willReturn($bag);
+        $validator->getMessageBag()->willReturn($bag);
 
-        $bag->all()->willReturn($messages = [
-            'foo' => 'failed',
+        $bag->toArray()->willReturn($messages = [
+            'foo' => [
+                'failed',
+            ],
         ]);
 
         $this->validate($data)->shouldReturn(false);
